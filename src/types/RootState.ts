@@ -1,4 +1,5 @@
 // [IMPORT NEW CONTAINERSTATE ABOVE] < Needed for generating containers seamlessly
+import { ContainerState } from '../app/types';
 
 /* 
   Because the redux-injectors injects your reducers asynchronously somewhere in your code
@@ -6,4 +7,5 @@
 */
 export interface RootState {
   // [INSERT NEW REDUCER KEY ABOVE] < Needed for generating containers seamlessly
+  app: ContainerState;
 }
