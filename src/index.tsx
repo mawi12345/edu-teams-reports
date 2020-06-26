@@ -12,6 +12,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as serviceWorker from 'serviceWorker';
+import { Grommet, grommet } from 'grommet';
 import 'sanitize.css/sanitize.css';
 
 // Import root app
@@ -33,9 +34,11 @@ interface Props {
 const ConnectedApp = ({ Component }: Props) => (
   <Provider store={store}>
     <HelmetProvider>
-      <React.StrictMode>
-        <Component />
-      </React.StrictMode>
+      <Grommet theme={grommet}>
+        <React.StrictMode>
+          <Component />
+        </React.StrictMode>
+      </Grommet>
     </HelmetProvider>
   </Provider>
 );
