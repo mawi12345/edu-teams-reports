@@ -8,7 +8,7 @@
 
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import csv from 'csv-parser';
 import { GlobalStyle } from 'styles/global-styles';
 import { useDropzone } from 'react-dropzone';
@@ -84,7 +84,7 @@ export function App() {
   });
 
   return (
-    <BrowserRouter>
+    <>
       <Helmet titleTemplate="%s - Teams Reports" defaultTitle="Teams Reports">
         <meta name="description" content="Display nice reports for edu teams" />
       </Helmet>
@@ -114,6 +114,6 @@ export function App() {
         <input {...getInputProps()} />
       </DropTarget>
       <GlobalStyle />
-    </BrowserRouter>
+    </>
   );
 }
