@@ -15,11 +15,17 @@ export interface Student {
   results: number[];
 }
 
+export interface FileContent {
+  todos: Todo[];
+  students: Student[];
+  sum: number;
+}
+
 export interface AppState {
   todos: Todo[];
   students: Student[];
   sum: number;
-  unsupportedFile: boolean;
+  loading: boolean;
 }
 
 /* 

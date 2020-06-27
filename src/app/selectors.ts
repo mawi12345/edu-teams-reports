@@ -1,17 +1,16 @@
 import { createSelector } from '@reduxjs/toolkit';
-
 import { RootState } from 'types';
 import { initialState } from './slice';
+import { FileContent, AppState } from './types';
 
 // First select the relevant part from the state
 const selectDomain = (state: RootState) => state.app || initialState;
 
-export interface AppInfo {
-  unsupportedFile: boolean;
-  hasData: boolean;
-}
-
-export const selectAppInfo = createSelector([selectDomain], appState => ({
-  unsupportedFile: appState.unsupportedFile,
-  hasData: appState.students.length > 0 && appState.todos.length > 0,
-}));
+export const selectFileContent = createSelector(
+  [selectDomain],
+  (appState: AppState): FileContent => ({
+    todos: appState.todos,
+    students: appState.students,
+    sum: appState.sum,
+  }),
+);

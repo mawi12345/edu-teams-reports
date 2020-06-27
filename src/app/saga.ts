@@ -1,22 +1,49 @@
-import { put, select, takeLatest } from 'redux-saga/effects';
+import { all, put, takeLatest, call } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
-import { selectAppInfo, AppInfo } from './selectors';
 import { actions } from './slice';
+import { PayloadAction } from '@reduxjs/toolkit';
+import { csvBlobToTable, isFileSupported, parseFile } from './file';
 
-export function* routeOnSetRows() {
-  const info: AppInfo = yield select(selectAppInfo);
-  if (info.unsupportedFile) {
-    console.log('error');
-    yield put(push('/error'));
+export function* readBlob(action: PayloadAction<Blob>) {
+  const file = action.payload;
+  console.log(file);
+  const rows = yield call(csvBlobToTable, file);
+  console.log(rows);
+  if (!isFileSupported(rows)) {
+    yield put(actions.fileParsedError('File is not supported'));
+  } else {
+    try {
+      const res = parseFile(rows);
+      yield put(actions.fileParsedSuccess(res));
+    } catch (e) {
+      yield put(actions.fileParsedError(e.message));
+    }
   }
-  if (info.hasData) {
-    yield put(push('/report'));
-  }
+}
+
+export function* readBlobSaga() {
+  yield takeLatest(actions.readBlob.type, readBlob);
+}
+
+export function* routeSuccess() {
+  yield put(push('/report'));
+}
+
+export function* routeSuccessSaga() {
+  yield takeLatest(actions.fileParsedSuccess.type, routeSuccess);
+}
+
+export function* routeError() {
+  yield put(push('/error'));
+}
+
+export function* routeErrorSaga() {
+  yield takeLatest(actions.fileParsedError.type, routeError);
 }
 
 /**
  * Root saga manages watcher lifecycle
  */
 export function* appSaga() {
-  yield takeLatest(actions.setRows.type, routeOnSetRows);
+  yield all([readBlobSaga(), routeSuccessSaga(), routeErrorSaga()]);
 }

@@ -9,7 +9,6 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Switch, Route } from 'react-router-dom';
-import csv from 'csv-parser';
 import { GlobalStyle } from 'styles/global-styles';
 import { useDropzone } from 'react-dropzone';
 import { HomePage } from './containers/HomePage/Loadable';
@@ -21,7 +20,6 @@ import { useDispatch } from 'react-redux';
 import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
 import { sliceKey, reducer, actions } from './slice';
 import { appSaga } from './saga';
-import { Row } from './types';
 
 const DropTarget = styled.div`
   display: flex;
@@ -58,23 +56,8 @@ export function App() {
 
   const onDrop = React.useCallback(
     acceptedFiles => {
-      // Do something with the files
       const [file] = acceptedFiles;
-      const reader = new FileReader();
-      reader.onabort = () => console.log('file reading was aborted');
-      reader.onerror = () => console.log('file reading has failed');
-      reader.onload = () => {
-        // Do whatever you want with the file contents
-        const parser = csv({ separator: ',', headers: false });
-        const results: object[] = [];
-        parser.on('data', data => results.push(data));
-        parser.on('end', () => {
-          dispatch(actions.setRows(results as Row[]));
-        });
-        parser.write(reader.result);
-        parser.end();
-      };
-      reader.readAsText(file);
+      dispatch(actions.readBlob(file as Blob));
     },
     [dispatch],
   );
