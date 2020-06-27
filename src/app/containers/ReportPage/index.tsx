@@ -35,7 +35,10 @@ export function ReportPage(props: Props) {
 
   // redirect if no data is available
   useEffect(() => {
-    if (content.students.length === 0 || content.todos.length === 0) {
+    if (
+      !content.error &&
+      (content.students.length === 0 || content.todos.length === 0)
+    ) {
       dispatch(push('/'));
     }
   }, [content, dispatch]);

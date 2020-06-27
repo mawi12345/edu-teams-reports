@@ -1,9 +1,10 @@
 {
-  "welcome": "Willkommen",
-  "intro": "Übersichtliche Anzeige von allen Abgaben eines Teams Kurs.",
+  "heading": "Teams Auswertungen",
   "feature1": "Alle Schüler und alle Punkte auf einer Seite",
   "feature2": "Summe der Punkte prozentuell und absolute pro Schüler",
   "feature3": "PDF-Druck für Eltern und Schüler",
+  "help": "Einfach einen MS Teams CSV Datei hier ablegen oder",
+  "selectFile": "Datei auswählen",
 
   "error": "Dateiformat nicht unterstützt",
   "errorInfo": "Leider konnte die Datei nicht gelesen werden. Bitte verwende nur Datein die von MS Teams exportiert wurden.",

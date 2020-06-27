@@ -1,20 +1,15 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-  html,
-  body {
-    height: 100%;
-    width: 100%;
-  }
 
   #root {
     min-height: 100vh;
-    min-width: 100%;
+    min-width: 100vw;
   }
 
   #root > div {
     min-height: 100vh;
-    min-width: 100%;
+    min-width: 100vw;
     display: flex;
     flex-direction: column;
   }

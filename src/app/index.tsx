@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet-async';
 import { Switch, Route } from 'react-router-dom';
 import { GlobalStyle } from 'styles/global-styles';
 import { useDropzone } from 'react-dropzone';
+import { useTranslation } from 'react-i18next';
 import { HomePage } from './containers/HomePage/Loadable';
 import { ErrorPage } from './components/ErrorPage/Loadable';
 import { ReportPage } from './containers/ReportPage/Loadable';
@@ -52,6 +53,7 @@ const Media = () => (
 );
 
 export function App() {
+  const { t } = useTranslation();
   useInjectReducer({ key: sliceKey, reducer: reducer });
   const dispatch = useDispatch();
   useInjectSaga({ key: sliceKey, saga: appSaga });
@@ -70,7 +72,10 @@ export function App() {
 
   return (
     <>
-      <Helmet titleTemplate="%s - Teams Reports" defaultTitle="Teams Reports">
+      <Helmet
+        titleTemplate={`%s - ${t('heading')}`}
+        defaultTitle={t('heading')}
+      >
         <meta name="description" content="Display nice reports for edu teams" />
       </Helmet>
       <DropTarget {...getRootProps()}>
@@ -96,7 +101,7 @@ export function App() {
           <Box align="center" direction="row" gap="xsmall">
             <BarChart color="brand" size="medium" />
             <Text alignSelf="center" color="brand" size="small">
-              Teams Reports
+              {t('heading')}
             </Text>
           </Box>
           <Media />

@@ -29,18 +29,21 @@ const appSlice = createSlice({
   reducers: {
     readBlob(state, action: PayloadAction<Blob>) {
       state.loading = true;
+      state.error = undefined;
     },
     fileParsedSuccess(state, action: PayloadAction<FileContent>) {
       state.loading = false;
       state.students = action.payload.students;
       state.todos = action.payload.todos;
       state.sum = action.payload.sum;
+      state.error = undefined;
     },
     fileParsedError(state, action: PayloadAction<string>) {
       state.loading = false;
       state.students = [];
       state.todos = [];
       state.sum = 0;
+      state.error = action.payload;
     },
   },
 });

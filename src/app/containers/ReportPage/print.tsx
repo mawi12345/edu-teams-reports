@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   Page,
   Text,
   View,
   Document,
   StyleSheet,
-  PDFDownloadLink,
+  pdf,
   Font,
 } from '@react-pdf/renderer';
 import { UseTranslationResponse } from 'react-i18next';
 import { Student, Todo } from 'app/types';
+import { saveAs } from 'file-saver';
+import { Button, Box } from 'grommet';
 
 Font.register({
   family: 'Roboto',
@@ -165,12 +167,16 @@ export function StudentPDFDownload({
   children,
   ...rest
 }: DownloadProps) {
+  const onClick = useCallback(() => {
+    const instance = pdf(<StudentDocument student={student} {...rest} />);
+    instance.toBlob().then(blob => {
+      saveAs(blob, `${student.last}_${student.first}.pdf`);
+    });
+  }, [rest, student]);
+
   return (
-    <PDFDownloadLink
-      fileName={`${student.last}_${student.first}.pdf`}
-      document={<StudentDocument student={student} {...rest} />}
-    >
-      {children}
-    </PDFDownloadLink>
+    <Button hoverIndicator="light-3" onClick={onClick}>
+      <Box pad={{ horizontal: 'small' }}>{children}</Box>
+    </Button>
   );
 }

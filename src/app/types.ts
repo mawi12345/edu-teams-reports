@@ -26,6 +26,7 @@ export interface AppState {
   students: Student[];
   sum: number;
   loading: boolean;
+  error?: string;
 }
 
 /* 
