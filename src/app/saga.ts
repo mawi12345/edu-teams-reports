@@ -6,9 +6,7 @@ import { csvBlobToTable, isFileSupported, parseFile } from './file';
 
 export function* readBlob(action: PayloadAction<Blob>) {
   const file = action.payload;
-  console.log(file);
   const rows = yield call(csvBlobToTable, file);
-  console.log(rows);
   if (!isFileSupported(rows)) {
     yield put(actions.fileParsedError('File is not supported'));
   } else {

@@ -3,5 +3,8 @@
   "intro": "Übersichtliche Anzeige von allen Abgaben eines Teams Kurs.",
   "feature1": "Alle Schüler und alle Punkte auf einer Seite",
   "feature2": "Summe der Punkte prozentuell und absolute pro Schüler",
-  "feature3": "PDF-Druck für Eltern und Schüler"
+  "feature3": "PDF-Druck für Eltern und Schüler",
+
+  "error": "Dateiformat nicht unterstützt",
+  "errorInfo": "Leider konnte die Datei nicht gelesen werden. Bitte verwende nur Datein die von MS Teams exportiert wurden."
 }

@@ -12,6 +12,7 @@ import { Switch, Route } from 'react-router-dom';
 import { GlobalStyle } from 'styles/global-styles';
 import { useDropzone } from 'react-dropzone';
 import { HomePage } from './containers/HomePage/Loadable';
+import { ErrorPage } from './components/ErrorPage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { Anchor, Box, Footer, Main, Text } from 'grommet';
 import { Github, BarChart } from 'grommet-icons';
@@ -79,6 +80,7 @@ export function App() {
         >
           <Switch>
             <Route exact path="/" component={HomePage} />
+            <Route exact path="/error" component={ErrorPage} />
             <Route component={NotFoundPage} />
           </Switch>
         </Main>
