@@ -8,5 +8,10 @@
   "error": "Dateiformat nicht unterstützt",
   "errorInfo": "Leider konnte die Datei nicht gelesen werden. Bitte verwende nur Datein die von MS Teams exportiert wurden.",
 
-  "studentSum": "Summe in Prozent ({{sum}} Punkte)"
+  "studentSum": "Summe in Prozent ({{sum}} Punkte)",
+  "studentPrintIntro": "Hat {{studentSum}} von {{sum}} Punkten erreicht ({{studentSumPercent}}%).",
+  "studentPrintHeadTodo": "Aufgabe",
+  "studentPrintHeadPercent": "%",
+  "studentPrintHeadPoints": "Punkte",
+  "studentPrintHeadMax": "Max"
 }

@@ -22,11 +22,14 @@ import {
   StudentName,
 } from './components';
 
+import { StudentPDFDownload } from './print';
+
 interface Props {}
 
 export function ReportPage(props: Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { t, i18n } = useTranslation();
+  const translation = useTranslation();
+  const { t } = translation;
   const dispatch = useDispatch();
   const content = useSelector(selectFileContent);
 
@@ -43,7 +46,11 @@ export function ReportPage(props: Props) {
         <title>{t('report')}</title>
         <meta name="description" content={t('reportInfo')} />
       </Helmet>
-      <Container onClick={e => e.stopPropagation()}>
+      <Container
+        onClick={e => {
+          e.stopPropagation();
+        }}
+      >
         <TodoRow>
           <TodoRowStudentSpacer />
           <TodoSum>{t('studentSum', { sum: content.sum })}</TodoSum>
@@ -54,7 +61,14 @@ export function ReportPage(props: Props) {
         {content.students.map(s => (
           <StudentRow key={`${s.first}-${s.last}`}>
             <StudentName>
-              {s.first} {s.last}
+              <StudentPDFDownload
+                translation={translation}
+                student={s}
+                todos={content.todos}
+                sum={content.sum}
+              >
+                {s.first} {s.last}
+              </StudentPDFDownload>
             </StudentName>
             <StudentSumResult p={s.sumPercent}>{s.sumPercent}</StudentSumResult>
             {s.results.map((r, index) => (

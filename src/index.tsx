@@ -12,7 +12,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as serviceWorker from 'serviceWorker';
-import { Grommet, grommet } from 'grommet';
+import { Grommet, grommet, ThemeType } from 'grommet';
+import { deepMerge } from 'grommet/utils';
 import { ConnectedRouter } from 'connected-react-router';
 import { history } from 'utils/history';
 import 'sanitize.css/sanitize.css';
@@ -27,6 +28,19 @@ import { configureAppStore } from 'store/configureStore';
 // Initialize languages
 import './locales/i18n';
 
+const theme: ThemeType = {
+  global: {
+    colors: {
+      brand: '#12941e',
+    },
+    font: {
+      family: 'Roboto',
+    },
+  },
+};
+
+const mergedTheme = deepMerge(grommet, theme);
+
 const store = configureAppStore(history);
 const MOUNT_NODE = document.getElementById('root') as HTMLElement;
 
@@ -37,7 +51,7 @@ const ConnectedApp = ({ Component }: Props) => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <HelmetProvider>
-        <Grommet theme={grommet}>
+        <Grommet theme={mergedTheme}>
           <React.StrictMode>
             <Component />
           </React.StrictMode>

@@ -44,6 +44,10 @@ export const StudentName = styled.div`
   height: 40px;
   line-height: 40px;
   margin-right: 10px;
+
+  a {
+    color: inherit;
+  }
 `;
 
 export interface StudentResultProps {
