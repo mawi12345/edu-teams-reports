@@ -6,5 +6,7 @@
   "feature3": "PDF-Druck für Eltern und Schüler",
 
   "error": "Dateiformat nicht unterstützt",
-  "errorInfo": "Leider konnte die Datei nicht gelesen werden. Bitte verwende nur Datein die von MS Teams exportiert wurden."
+  "errorInfo": "Leider konnte die Datei nicht gelesen werden. Bitte verwende nur Datein die von MS Teams exportiert wurden.",
+
+  "studentSum": "Summe in Prozent ({{sum}} Punkte)"
 }

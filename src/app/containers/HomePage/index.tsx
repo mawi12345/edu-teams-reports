@@ -8,8 +8,8 @@ export function HomePage() {
   return (
     <>
       <Helmet>
-        <title>Welcome</title>
-        <meta name="description" content="A Boilerplate application homepage" />
+        <title>{t('welcome')}</title>
+        <meta name="description" content={t('intro')} />
       </Helmet>
       <Box flex justify="center" align="center" background="brand" fill>
         <Heading>{t('welcome')}</Heading>

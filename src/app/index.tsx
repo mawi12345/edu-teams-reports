@@ -13,6 +13,7 @@ import { GlobalStyle } from 'styles/global-styles';
 import { useDropzone } from 'react-dropzone';
 import { HomePage } from './containers/HomePage/Loadable';
 import { ErrorPage } from './components/ErrorPage/Loadable';
+import { ReportPage } from './containers/ReportPage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { Anchor, Box, Footer, Main, Text } from 'grommet';
 import { Github, BarChart } from 'grommet-icons';
@@ -81,10 +82,17 @@ export function App() {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/error" component={ErrorPage} />
+            <Route exact path="/report" component={ReportPage} />
             <Route component={NotFoundPage} />
           </Switch>
         </Main>
-        <Footer background="light-3" pad="small">
+        <Footer
+          background="light-3"
+          pad="small"
+          onClick={e => {
+            e.stopPropagation();
+          }}
+        >
           <Box align="center" direction="row" gap="xsmall">
             <BarChart color="brand" size="medium" />
             <Text alignSelf="center" color="brand" size="small">

@@ -67,11 +67,11 @@ export function parseFile(rows: Row[]): FileContent {
 
     const results: number[] = [];
     for (let x = 0; x < count; x += 1) {
-      results.push(parseInt(studentRow[3 + x * 3], 10));
+      results.push(saveNumber(parseInt(studentRow[3 + x * 3], 10)));
     }
 
     const studentSum: number = results.reduce(
-      (a: number, b: number) => saveNumber(a) + saveNumber(b),
+      (a: number, b: number) => a + b,
       0,
     );
 
