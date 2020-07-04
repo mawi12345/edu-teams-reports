@@ -1,4 +1,24 @@
 {
-  "welcome": "Welcome",
-  "intro": "This ...."
+  "heading": "Teams Reports",
+  "feature1": "All students and all points on one page",
+  "feature2": "Sum of points in percentage and absolute terms per student",
+  "feature3": "PDF printing for parents and students",
+  "help": "Just file a \"Teams Excel Export\" here or",
+  "selectFile": "Select file",
+
+  "error": "File format not supported",
+  "errorInfo": "Unfortunately the file could not be read. Please use only files exported by MS Teams.",
+
+  "studentSum": "Total in percent",
+  "studentPrintIntro": "Has reached {{studentSum}} of {{sum}} points ({{studentSumPercent}}%)",
+  "studentPrintHeadTodo": "Task",
+  "studentPrintHeadPercent": "%",
+  "studentPrintHeadPoints": "Points",
+  "studentPrintHeadMax": "Max.",
+
+  "reportHelp1": "Click on a Student to create a PDF.",
+  "reportHelp2": "Simply place a different \"Teams Excel Export\" on this page to update the report.",
+
+  "about": "About",
+  "aboutIntro": "This open source web application is developed under the MIT license."
 }

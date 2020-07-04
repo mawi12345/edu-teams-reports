@@ -1,18 +1,24 @@
 {
   "heading": "Teams Auswertungen",
   "feature1": "Alle Schüler und alle Punkte auf einer Seite",
-  "feature2": "Summe der Punkte prozentuell und absolute pro Schüler",
+  "feature2": "Summe der Punkte prozentuell und absolut pro Schüler",
   "feature3": "PDF-Druck für Eltern und Schüler",
-  "help": "Einfach einen MS Teams CSV Datei hier ablegen oder",
+  "help": "Einfach einen \"Teams Excel Export\" hier ablegen oder",
   "selectFile": "Datei auswählen",
 
   "error": "Dateiformat nicht unterstützt",
   "errorInfo": "Leider konnte die Datei nicht gelesen werden. Bitte verwende nur Datein die von MS Teams exportiert wurden.",
 
-  "studentSum": "Summe in Prozent ({{sum}} Punkte)",
+  "studentSum": "Summe in Prozent",
   "studentPrintIntro": "Hat {{studentSum}} von {{sum}} Punkten erreicht ({{studentSumPercent}}%).",
   "studentPrintHeadTodo": "Aufgabe",
   "studentPrintHeadPercent": "%",
   "studentPrintHeadPoints": "Punkte",
-  "studentPrintHeadMax": "Max"
+  "studentPrintHeadMax": "Max.",
+
+  "reportHelp1": "Klicke auf einen Schüler, um eine PDF-Datei zu erstellen.",
+  "reportHelp2": "Einfach einen anderen \"Teams Excel Export\" auf dieser Seite ablegen um die Auswertung zu aktualisieren.",
+
+  "about": "About",
+  "aboutIntro": "Diese Open-Source Web-Anwendung wird unter der MIT Lizenz entwickelt."
 }

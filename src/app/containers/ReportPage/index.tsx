@@ -10,6 +10,8 @@ import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectFileContent } from '../../selectors';
 import { push } from 'connected-react-router';
+import { Box, Text, Heading, List, Button, Image } from 'grommet';
+import { Help } from 'grommet-icons';
 import {
   Container,
   Todo,
@@ -46,7 +48,6 @@ export function ReportPage(props: Props) {
   return (
     <>
       <Helmet>
-        <title>{t('report')}</title>
         <meta name="description" content={t('reportInfo')} />
       </Helmet>
       <Container
@@ -89,6 +90,15 @@ export function ReportPage(props: Props) {
           </StudentRow>
         ))}
       </Container>
+      <Box pad={'medium'} direction={'row'} align={'center'}>
+        <Box pad={'medium'}>
+          <Help />
+        </Box>
+        <Box>
+          <Text size="medium">{t('reportHelp1')}</Text>
+          <Text size="medium">{t('reportHelp2')}</Text>
+        </Box>
+      </Box>
     </>
   );
 }

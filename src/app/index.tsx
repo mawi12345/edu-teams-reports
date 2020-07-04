@@ -9,14 +9,16 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Switch, Route } from 'react-router-dom';
+import { push } from 'connected-react-router';
 import { GlobalStyle } from 'styles/global-styles';
 import { useDropzone } from 'react-dropzone';
 import { useTranslation } from 'react-i18next';
 import { HomePage } from './containers/HomePage/Loadable';
+import { AboutPage } from './containers/AboutPage/Loadable';
 import { ErrorPage } from './components/ErrorPage/Loadable';
 import { ReportPage } from './containers/ReportPage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
-import { Anchor, Box, Footer, Main, Text } from 'grommet';
+import { Box, Footer, Main, Text, Button } from 'grommet';
 import { Github, BarChart } from 'grommet-icons';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
@@ -29,28 +31,6 @@ const DropTarget = styled.div`
   flex-direction: column;
   flex: 1 0 auto;
 `;
-
-const Media = () => (
-  <Box direction="row" gap="xxsmall" justify="center">
-    <Anchor
-      a11yTitle="Share feedback on Github"
-      href="https://github.com/mawi12345/edu-teams-reports"
-      icon={<Github color="brand" />}
-    />
-    {/*
-    <Anchor
-      a11yTitle="Chat with us on Slack"
-      href="https://www.facebook.com/"
-      icon={<Instagram color="brand" />}
-    />
-    <Anchor
-      a11yTitle="Follow us on Twitter"
-      href="https://twitter.com/"
-      icon={<Twitter color="brand" />}
-    />
-    */}
-  </Box>
-);
 
 export function App() {
   const { t } = useTranslation();
@@ -72,10 +52,7 @@ export function App() {
 
   return (
     <>
-      <Helmet
-        titleTemplate={`%s - ${t('heading')}`}
-        defaultTitle={t('heading')}
-      >
+      <Helmet defaultTitle={t('heading')}>
         <meta name="description" content="Display nice reports for edu teams" />
       </Helmet>
       <DropTarget {...getRootProps()}>
@@ -88,6 +65,7 @@ export function App() {
             <Route exact path="/" component={HomePage} />
             <Route exact path="/error" component={ErrorPage} />
             <Route exact path="/report" component={ReportPage} />
+            <Route exact path="/about" component={AboutPage} />
             <Route component={NotFoundPage} />
           </Switch>
         </Main>
@@ -98,13 +76,40 @@ export function App() {
             e.stopPropagation();
           }}
         >
-          <Box align="center" direction="row" gap="xsmall">
+          <Box
+            align="center"
+            direction="row"
+            gap="xsmall"
+            onClick={() => dispatch(push('/'))}
+          >
             <BarChart color="brand" size="medium" />
             <Text alignSelf="center" color="brand" size="small">
               {t('heading')}
             </Text>
           </Box>
-          <Media />
+          <Box direction="row" gap="xxsmall" justify="center">
+            {/*<Button
+              hoverIndicator="light-1"
+              onClick={() => dispatch(push('/about'))}
+            >
+              <Box pad="small" direction="row" align="center" gap="small">
+                <Info />
+                <Text size="small">{t('about')}</Text>
+              </Box>
+            </Button>*/}
+            <Button
+              hoverIndicator="light-1"
+              onClick={() =>
+                (window.location.href =
+                  'https://github.com/mawi12345/edu-teams-reports')
+              }
+            >
+              <Box pad="small" direction="row" align="center" gap="small">
+                <Github />
+                <Text size="small">Github</Text>
+              </Box>
+            </Button>
+          </Box>
           <Text textAlign="center" size="xsmall">
             © 2020 Martin Wind
           </Text>

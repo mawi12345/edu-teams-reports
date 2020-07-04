@@ -1,0 +1,4 @@
+#!/bin/bash
+yarn build
+aws --profile windm s3 sync build s3://teams-reports
+aws --profile windm cloudfront create-invalidation --distribution-id E39PEURBT3T1D8 --paths "/*"

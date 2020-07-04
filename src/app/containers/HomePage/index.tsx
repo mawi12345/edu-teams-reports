@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Box, Text, Heading, List, Button } from 'grommet';
+import { Box, Text, Heading, List, Button, Image } from 'grommet';
 import { useTranslation } from 'react-i18next';
 
 export function HomePage() {
@@ -8,7 +8,6 @@ export function HomePage() {
   return (
     <>
       <Helmet>
-        <title>{t('heading')}</title>
         <meta name="description" content={t('intro')} />
       </Helmet>
       <Box flex justify="center" align="center" background="brand" fill>
@@ -23,6 +22,7 @@ export function HomePage() {
           {t('help')}
         </Text>
         <Button label={t('selectFile')} />
+        <Image margin={{ top: '22px' }} src={'teams_export.png'} />
       </Box>
     </>
   );
