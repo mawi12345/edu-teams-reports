@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectFileContent } from '../../selectors';
 import { push } from 'connected-react-router';
-import { Box, Text, Heading, List, Button, Image } from 'grommet';
+import { Box, Text } from 'grommet';
 import { Help } from 'grommet-icons';
 import {
   Container,
