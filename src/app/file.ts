@@ -1,5 +1,5 @@
 import csv from 'csv-parser';
-import { Row, FileContent } from './types';
+import { Row, FileContent, Student } from './types';
 
 export function csvBlobToTable(file: Blob): Promise<Row[]> {
   return new Promise((resolve, reject) => {
@@ -92,7 +92,35 @@ export function parseFile(rows: Row[]): FileContent {
     });
   }
 
-  content.students.sort((a, b) => {
+  return content;
+}
+
+export const sortContent = (orig: FileContent): FileContent => {
+  const todos = orig.todos.map((todo, index) => {
+    const results = orig.students.map(student => student.results[index]);
+    return {
+      ...todo,
+      results,
+    };
+  });
+  todos.sort((a, b) => {
+    const nameA = a.name.toUpperCase();
+    const nameB = b.name.toUpperCase();
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+  });
+
+  const students: Student[] = orig.students.map((student, index) => ({
+    ...student,
+    results: todos.map(t => t.results[index]),
+  }));
+
+  students.sort((a, b) => {
     const nameA = a.last.toUpperCase();
     const nameB = b.last.toUpperCase();
     if (nameA < nameB) {
@@ -104,5 +132,9 @@ export function parseFile(rows: Row[]): FileContent {
     return 0;
   });
 
-  return content;
-}
+  return {
+    students,
+    sum: orig.sum,
+    todos,
+  };
+};
