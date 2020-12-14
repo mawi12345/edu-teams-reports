@@ -117,7 +117,7 @@ export function StudentDocument({
           <Text style={styles.intro}>
             {t('studentPrintIntro', {
               studentSum: student.sum,
-              sum,
+              sum: student.max,
               studentSumPercent: student.sumPercent,
             })}
           </Text>
@@ -136,7 +136,7 @@ export function StudentDocument({
             <Text style={styles.todoHead}>{t('studentPrintHeadMax')}</Text>
           </View>
         </View>
-        {student.results.map((r: number, index: number) => {
+        {student.results.map((r, index: number) => {
           const todo = todos[index];
           return (
             <View key={index} style={styles.row}>
@@ -145,7 +145,11 @@ export function StudentDocument({
               </View>
               <View style={styles.percent}>
                 <Text style={styles.todoText}>
-                  {todo.max === 0 ? 100 : Math.round((r * 100) / todo.max)}%
+                  {r === undefined && '-'}
+                  {r !== undefined &&
+                    `${
+                      todo.max === 0 ? 100 : Math.round((r * 100) / todo.max)
+                    }%`}
                 </Text>
               </View>
               <View style={styles.points}>

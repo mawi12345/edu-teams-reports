@@ -64,6 +64,7 @@ export const StudentResult = styled.div<StudentResultProps>`
   border-radius: 20px;
   margin: 4px;
   color: ${({ p }) => `hsl(${p}, 100%, 30%)`};
+  font-size: 17px;
 `;
 
 export const StudentSumResult = styled(StudentResult)`

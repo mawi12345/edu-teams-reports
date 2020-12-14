@@ -11,8 +11,9 @@ export interface Student {
   first: string;
   last: string;
   sum: number;
+  max: number;
   sumPercent: number;
-  results: number[];
+  results: (number | undefined)[];
 }
 
 export interface FileContent {

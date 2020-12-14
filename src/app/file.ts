@@ -65,13 +65,20 @@ export function parseFile(rows: Row[]): FileContent {
       }
     }
 
-    const results: number[] = [];
+    const results: (number | undefined)[] = [];
+    let max = 0;
     for (let x = 0; x < count; x += 1) {
-      results.push(saveNumber(parseInt(studentRow[3 + x * 3], 10)));
+      if (studentRow[3 + x * 3] === '') {
+        console.log(`${studentRow[1]} fehlt bei ${content.todos[x].name}`);
+        results.push(undefined);
+      } else {
+        max += content.todos[x].max;
+        results.push(saveNumber(parseInt(studentRow[3 + x * 3], 10)));
+      }
     }
 
-    const studentSum: number = results.reduce(
-      (a: number, b: number) => a + b,
+    const studentSum: number = results.reduce<number>(
+      (a: number | undefined, b: number | undefined) => (a || 0) + (b || 0),
       0,
     );
 
@@ -79,7 +86,8 @@ export function parseFile(rows: Row[]): FileContent {
       first: studentRow[0],
       last: studentRow[1],
       sum: studentSum,
-      sumPercent: Math.round((studentSum * 100) / content.sum),
+      max,
+      sumPercent: Math.round((studentSum * 100) / max),
       results,
     });
   }

@@ -79,7 +79,7 @@ export function ReportPage(props: Props) {
               <StudentResult
                 key={index}
                 p={
-                  content.todos[index].max === 0
+                  content.todos[index].max === 0 || r === undefined
                     ? 100
                     : Math.round((r * 100) / content.todos[index].max)
                 }
