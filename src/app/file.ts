@@ -104,12 +104,20 @@ export const sortContent = (orig: FileContent): FileContent => {
     };
   });
   todos.sort((a, b) => {
-    const nameA = a.name.toUpperCase();
-    const nameB = b.name.toUpperCase();
-    if (nameA < nameB) {
+    const numA = parseInt(a.name);
+    const numB = parseInt(b.name);
+
+    let ac: number | string = a.name.toUpperCase();
+    let bc: number | string = b.name.toUpperCase();
+    if (!isNaN(numA) && !isNaN(numB)) {
+      ac = numA;
+      bc = numB;
+    }
+
+    if (ac < bc) {
       return -1;
     }
-    if (nameA > nameB) {
+    if (ac > bc) {
       return 1;
     }
     return 0;
