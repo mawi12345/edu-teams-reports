@@ -22,11 +22,18 @@ export function csvBlobToTable(file: Blob): Promise<Row[]> {
 
 export function isFileSupported(rows: Row[]): boolean {
   const headerRow = rows[0];
-  return (
+
+  const isEnFile =
     headerRow[0] === 'First Name' &&
     headerRow[1] === 'Last Name' &&
-    headerRow[2] === 'Email Address'
-  );
+    headerRow[2] === 'Email Address';
+
+  const isDeFile =
+    headerRow[0] === 'Vorname' &&
+    headerRow[1] === 'Nachname' &&
+    headerRow[2] === 'E-Mail-Adresse';
+
+  return isEnFile || isDeFile;
 }
 
 const saveNumber = (a: number) => {

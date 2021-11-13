@@ -180,7 +180,9 @@ export function StudentPDFDownload({
 
   return (
     <Button hoverIndicator="light-3" onClick={onClick}>
-      <Box pad={{ horizontal: 'small' }}>{children}</Box>
+      <Box pad={{ horizontal: 'small' }} style={{ whiteSpace: 'nowrap' }}>
+        {children}
+      </Box>
     </Button>
   );
 }
