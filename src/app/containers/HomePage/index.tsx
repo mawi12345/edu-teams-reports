@@ -22,7 +22,7 @@ export function HomePage() {
           {t('help')}
         </Text>
         <Button label={t('selectFile')} />
-        <Image margin={{ top: '22px' }} src={'teams_export.png'} />
+        <Image margin={{ top: '22px' }} src={'teams_export.jpg'} />
       </Box>
     </>
   );

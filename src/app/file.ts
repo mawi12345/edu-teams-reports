@@ -76,7 +76,7 @@ export function parseFile(rows: Row[]): FileContent {
     let max = 0;
     for (let x = 0; x < count; x += 1) {
       if (studentRow[3 + x * 3] === '') {
-        console.log(`${studentRow[1]} fehlt bei ${content.todos[x].name}`);
+        // console.log(`${studentRow[1]} fehlt bei ${content.todos[x].name}`);
         results.push(undefined);
       } else {
         max += content.todos[x].max;

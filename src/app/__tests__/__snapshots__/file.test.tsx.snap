@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`file should convert blob to table 1`] = `
+Array [
+  Object {
+    "0": "Vorname",
+    "1": "Nachname",
+    "10": "Punkt",
+    "11": "Feedback",
+    "2": "E-Mail-Adresse",
+    "3": "<name-of-task1>",
+    "4": "Punkt",
+    "5": "Feedback",
+    "6": "<name-of-task2>",
+    "7": "Punkt",
+    "8": "Feedback",
+    "9": "<name-of-task3>",
+  },
+  Object {
+    "0": "Vorname1",
+    "1": "Nachname1",
+    "10": "10",
+    "11": "",
+    "2": "1@schule.at",
+    "3": "6",
+    "4": "7",
+    "5": "",
+    "6": "20",
+    "7": "25",
+    "8": "",
+    "9": "",
+  },
+  Object {
+    "0": "Vorname2",
+    "1": "Nachname2",
+    "10": "10",
+    "11": "",
+    "2": "2@schule.at",
+    "3": "5",
+    "4": "7",
+    "5": "",
+    "6": "20",
+    "7": "25",
+    "8": "",
+    "9": "9",
+  },
+  Object {
+    "0": "Vorname3",
+    "1": "Nachname3",
+    "10": "10",
+    "11": "",
+    "2": "3@schule.at",
+    "3": "7",
+    "4": "7",
+    "5": "",
+    "6": "20",
+    "7": "25",
+    "8": "",
+    "9": "10",
+  },
+]
+`;
+
+exports[`file should parse table 1`] = `
+Object {
+  "students": Array [
+    Object {
+      "first": "Vorname1",
+      "last": "Nachname1",
+      "max": 32,
+      "results": Array [
+        6,
+        20,
+        undefined,
+      ],
+      "sum": 26,
+      "sumPercent": 81,
+    },
+    Object {
+      "first": "Vorname2",
+      "last": "Nachname2",
+      "max": 42,
+      "results": Array [
+        5,
+        20,
+        9,
+      ],
+      "sum": 34,
+      "sumPercent": 81,
+    },
+    Object {
+      "first": "Vorname3",
+      "last": "Nachname3",
+      "max": 42,
+      "results": Array [
+        7,
+        20,
+        10,
+      ],
+      "sum": 37,
+      "sumPercent": 88,
+    },
+  ],
+  "sum": 42,
+  "todos": Array [
+    Object {
+      "max": 7,
+      "name": "<name-of-task1>",
+    },
+    Object {
+      "max": 25,
+      "name": "<name-of-task2>",
+    },
+    Object {
+      "max": 10,
+      "name": "<name-of-task3>",
+    },
+  ],
+}
+`;
